@@ -1,0 +1,127 @@
+// lib/services/export_service.dart
+// 📤 خدمة تصدير البيانات - Data Export Service
+
+import 'dart:convert';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'package:vita/services/base_api_service.dart';
+import 'package:vita/services/cache_manager.dart';
+import 'package:vita/utils/prefs_helper.dart';
+
+class ExportService {
+  static const String _pathPrefix = 'api/export';
+
+  static int get _userId => PrefsHelper.getUserId() ?? 1;
+
+  // ============================================
+  // ✅ تصدير CSV
+  // ============================================
+  static Future<String?> exportCsv() async {
+    print('\n📤 [ExportService] تصدير CSV');
+
+    try {
+      final response = await BaseApiService.get(
+        '$_pathPrefix/csv/$_userId',
+      );
+
+      if (response.statusCode == 200) {
+        final dir = await getApplicationDocumentsDirectory();
+        final file = File('${dir.path}/health_data_export.csv');
+        await file.writeAsString(response.body);
+        print('✅ تم تصدير CSV إلى: ${file.path}');
+        return file.path;
+      }
+      print('❌ فشل تصدير CSV: ${response.statusCode}');
+      return null;
+    } catch (e) {
+      print('❌ خطأ في تصدير CSV: $e');
+      return null;
+    }
+  }
+
+  // ============================================
+  // ✅ تصدير JSON
+  // ============================================
+  static Future<String?> exportJson() async {
+    print('\n📤 [ExportService] تصدير JSON');
+
+    try {
+      final response = await BaseApiService.get(
+        '$_pathPrefix/json/$_userId',
+      );
+
+      if (response.statusCode == 200) {
+        final dir = await getApplicationDocumentsDirectory();
+        final file = File('${dir.path}/health_data_export.json');
+        await file.writeAsString(response.body);
+        print('✅ تم تصدير JSON إلى: ${file.path}');
+        return file.path;
+      }
+      print('❌ فشل تصدير JSON: ${response.statusCode}');
+      return null;
+    } catch (e) {
+      print('❌ خطأ في تصدير JSON: $e');
+      return null;
+    }
+  }
+
+  // ============================================
+  // ✅ تصدير PDF
+  // ============================================
+  static Future<String?> exportPdf() async {
+    print('\n📤 [ExportService] تصدير PDF');
+
+    try {
+      final response = await BaseApiService.get(
+        '$_pathPrefix/pdf/$_userId',
+      );
+
+      if (response.statusCode == 200) {
+        final dir = await getApplicationDocumentsDirectory();
+        final file = File('${dir.path}/health_report.pdf');
+        await file.writeAsBytes(response.bodyBytes);
+        print('✅ تم تصدير PDF إلى: ${file.path}');
+        return file.path;
+      }
+      print('❌ فشل تصدير PDF: ${response.statusCode}');
+      return null;
+    } catch (e) {
+      print('❌ خطأ في تصدير PDF: $e');
+      return null;
+    }
+  }
+
+  // ============================================
+  // ✅ معلومات التصدير المتاحة
+  // ============================================
+  static Future<Map<String, dynamic>?> getExportInfo() async {
+    print('\n📤 [ExportService] جلب معلومات التصدير');
+
+    try {
+      final result = await CacheManager.instance
+          .getOrFetch<Map<String, dynamic>>(
+        key: 'export_info_$_userId',
+        fetch: () async {
+          final response = await BaseApiService.get(
+            '$_pathPrefix/available/$_userId',
+          );
+
+          if (response.statusCode == 200) {
+            final jsonData = json.decode(response.body) as Map<String, dynamic>;
+            print('✅ تم جلب معلومات التصدير');
+            return jsonData;
+          }
+          print('❌ فشل جلب معلومات التصدير: ${response.statusCode}');
+          return null;
+        },
+        ttl: const Duration(minutes: 30),
+        staleWhileRevalidate: true,
+      );
+
+      return result;
+    } catch (e) {
+      print('❌ خطأ في جلب معلومات التصدير: $e');
+      return null;
+    }
+  }
+}

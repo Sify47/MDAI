@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "E:/Flutter/hospital/windows",
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
