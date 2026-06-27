@@ -20,14 +20,16 @@
             --danger: #F44336;
             --dark: #1a1a2e;
             --darker: #0f0f23;
-            --light: #f8f9fa;
+            --light: #f0f4f8;
             --gray: #6c757d;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 20px rgba(0,0,0,0.06);
             --gradient-1: linear-gradient(135deg, #2196F3, #00BCD4);
             --gradient-2: linear-gradient(135deg, #FF6F00, #F44336);
             --gradient-3: linear-gradient(135deg, #4CAF50, #8BC34A);
             --gradient-4: linear-gradient(135deg, #9C27B0, #E91E63);
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.08);
             --radius: 16px;
             --radius-sm: 8px;
         }
@@ -45,7 +47,7 @@
         body {
             font-family: 'Cairo', sans-serif;
             background: var(--light);
-            color: #333;
+            color: #2d3748;
             line-height: 1.8;
             overflow-x: hidden;
         }
@@ -61,10 +63,10 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.92);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
             transition: all 0.3s ease;
         }
 
@@ -104,16 +106,17 @@
             display: flex;
             gap: 8px;
             list-style: none;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #555;
+            color: #4a5568;
             padding: 8px 16px;
             border-radius: 8px;
             transition: all 0.3s ease;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .nav-links a:hover,
@@ -642,9 +645,304 @@
             margin-bottom: 16px;
         }
 
+        /* Problem Section */
+        .problem-section {
+            background: linear-gradient(135deg, #fff5f5, #ffffff);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .problem-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .problem-stat-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(244, 67, 54, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .problem-stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .problem-stat-card .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--danger);
+        }
+
+        .problem-stat-card .stat-label {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .problem-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .problem-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .problem-list li .icon {
+            font-size: 1.3rem;
+            min-width: 30px;
+        }
+
+        .problem-list li .text {
+            color: #4a5568;
+        }
+
+        .problem-list li .text strong {
+            color: var(--dark);
+            display: block;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: linear-gradient(135deg, #f0f7ff, #ffffff);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .solution-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 32px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(33, 150, 243, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .solution-card .solution-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .solution-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .solution-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, #f0fdf4, #ffffff);
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .impact-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(76, 175, 80, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .impact-card .impact-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--success);
+        }
+
+        .impact-card .impact-label {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+
+        /* Future Section */
+        .future-section {
+            background: linear-gradient(135deg, #faf5ff, #ffffff);
+        }
+
+        .future-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .future-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(156, 39, 176, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .future-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .future-card .future-badge {
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .future-card .future-badge.short {
+            background: #e3f2fd;
+            color: #1976D2;
+        }
+
+        .future-card .future-badge.medium {
+            background: #fff3e0;
+            color: #F57C00;
+        }
+
+        .future-card .future-badge.long {
+            background: #f3e5f5;
+            color: #7B1FA2;
+        }
+
+        .future-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .future-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .future-card ul li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .future-card ul li::before {
+            content: "✦";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            background: linear-gradient(135deg, #f5faff, #ffffff);
+        }
+
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .rec-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+
+        .rec-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .rec-card .rec-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .rec-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .rec-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rec-card ul li {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #4a5568;
+        }
+
+        .rec-card ul li::before {
+            content: "▸";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .rec-card:nth-child(1) { border-top: 4px solid #2196F3; }
+        .rec-card:nth-child(2) { border-top: 4px solid #4CAF50; }
+        .rec-card:nth-child(3) { border-top: 4px solid #FF9800; }
+        .rec-card:nth-child(4) { border-top: 4px solid #9C27B0; }
+
         /* Features Section */
         .features {
-            background: white;
+            background: var(--light);
         }
 
         .features-grid {
@@ -654,13 +952,14 @@
         }
 
         .feature-card {
-            background: var(--light);
+            background: var(--card-bg);
             border-radius: var(--radius);
             padding: 32px;
             transition: all 0.4s ease;
             border: 1px solid rgba(0,0,0,0.04);
             position: relative;
             overflow: hidden;
+            box-shadow: var(--card-shadow);
         }
 
         .feature-card::before {
@@ -681,10 +980,17 @@
         .feature-card:nth-child(6)::before { background: var(--gradient-2); }
         .feature-card:nth-child(7)::before { background: var(--gradient-3); }
         .feature-card:nth-child(8)::before { background: var(--gradient-4); }
+        .feature-card:nth-child(9)::before { background: var(--gradient-1); }
+        .feature-card:nth-child(10)::before { background: var(--gradient-3); }
+        .feature-card:nth-child(11)::before { background: var(--gradient-2); }
+        .feature-card:nth-child(12)::before { background: var(--gradient-4); }
+        .feature-card:nth-child(13)::before { background: var(--gradient-3); }
+        .feature-card:nth-child(14)::before { background: var(--gradient-1); }
 
         .feature-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #ffffff, #f8faff);
         }
 
         .feature-card:hover::before {
@@ -712,6 +1018,12 @@
         .feature-card:nth-child(6) .feature-icon { background: rgba(244, 67, 54, 0.1); }
         .feature-card:nth-child(7) .feature-icon { background: rgba(76, 175, 80, 0.1); }
         .feature-card:nth-child(8) .feature-icon { background: rgba(33, 150, 243, 0.1); }
+        .feature-card:nth-child(9) .feature-icon { background: rgba(156, 39, 176, 0.1); }
+        .feature-card:nth-child(10) .feature-icon { background: rgba(33, 150, 243, 0.1); }
+        .feature-card:nth-child(11) .feature-icon { background: rgba(76, 175, 80, 0.1); }
+        .feature-card:nth-child(12) .feature-icon { background: rgba(255, 152, 0, 0.1); }
+        .feature-card:nth-child(13) .feature-icon { background: rgba(244, 67, 54, 0.1); }
+        .feature-card:nth-child(14) .feature-icon { background: rgba(33, 150, 243, 0.1); }
 
         .feature-card h3 {
             font-size: 1.2rem;
@@ -767,6 +1079,7 @@
             border-radius: var(--radius);
             padding: 32px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .arch-card:hover {
@@ -846,50 +1159,327 @@
 
         /* Screens Section */
         .screens {
-            background: white;
+            background: var(--light);
         }
 
         .screens-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
 
         .screen-card {
-            background: var(--light);
+            background: var(--card-bg);
             border-radius: var(--radius);
             padding: 24px;
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(0,0,0,0.04);
+            box-shadow: var(--card-shadow);
         }
 
         .screen-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #ffffff, #f8faff);
         }
 
         .screen-card .screen-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--gradient-1);
-            border-radius: 18px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
-            margin: 0 auto 16px;
+            font-size: 1.5rem;
+            margin: 0 auto 12px;
         }
 
         .screen-card h4 {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .screen-card p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Backend Details */
+        .back-details {
+            background: var(--light);
+        }
+
+        .back-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .back-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+
+        .back-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #ffffff, #f8faff);
+        }
+
+        .back-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .back-card p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* ML Section */
+        .ml-section {
+            background: var(--light);
+        }
+
+        .ml-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .ml-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .ml-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #ffffff, #f8faff);
+        }
+
+        .ml-card .ml-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .ml-card h4 {
             font-weight: 700;
             margin-bottom: 8px;
         }
 
-        .screen-card p {
-            font-size: 0.85rem;
+        .ml-card p {
             color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Flow Charts Section */
+        .flowcharts {
+            background: var(--light);
+        }
+
+        .flowcharts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .flowchart-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.4s ease;
+            box-shadow: var(--card-shadow);
+        }
+
+        .flowchart-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #ffffff, #f8faff);
+        }
+
+        .flowchart-card .flowchart-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: white;
+            padding: 12px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .flowchart-card:hover .flowchart-img {
+            transform: scale(1.02);
+        }
+
+        .flowchart-card .flowchart-info {
+            padding: 12px 16px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .flowchart-card .flowchart-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+
+        .flowchart-card .flowchart-info p {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            background: var(--light);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 14px 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 12px 16px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .comparison-table tr:hover td {
+            background: rgba(33, 150, 243, 0.04);
+        }
+
+        .comparison-table .check {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .comparison-table .vita-row {
+            background: rgba(33, 150, 243, 0.05);
+            font-weight: 600;
+        }
+
+        .comparison-table .vita-row td:first-child {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Tech Stack Section */
+        .tech-stack-section {
+            background: var(--light);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-item {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, #ffffff, #f8faff);
+        }
+
+        .tech-item .tech-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .tech-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .tech-item p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Conclusion Section */
+        .conclusion-section {
+            background: linear-gradient(135deg, var(--dark), #1a1a2e);
+            color: white;
+        }
+
+        .conclusion-section .section-header h2 {
+            color: white;
+        }
+
+        .conclusion-section .section-header p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .conclusion-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .conclusion-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-4px);
+        }
+
+        .conclusion-card .conclusion-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .conclusion-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .conclusion-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
         }
 
         /* Stats Section */
@@ -914,177 +1504,6 @@
         .stat-item .label {
             font-size: 1rem;
             opacity: 0.85;
-        }
-
-        /* Tech Stack Section */
-        .tech-stack-section {
-            background: var(--light);
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .tech-item {
-            background: white;
-            border-radius: var(--radius);
-            padding: 24px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .tech-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .tech-item .tech-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        .tech-item h4 {
-            font-size: 1rem;
-            font-weight: 700;
-        }
-
-        .tech-item p {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        /* Backend Details */
-        .back-details {
-            background: white;
-        }
-
-        .back-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .back-card {
-            background: var(--light);
-            border-radius: var(--radius);
-            padding: 24px;
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.3s ease;
-        }
-
-        .back-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .back-card h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--primary);
-        }
-
-        .back-card p {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
-        /* ML Section */
-        .ml-section {
-            background: var(--light);
-        }
-
-        .ml-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .ml-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 28px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .ml-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .ml-card .ml-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .ml-card h4 {
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .ml-card p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Flow Charts Gallery */
-        .flowcharts {
-            background: white;
-        }
-
-        .flowcharts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
-        }
-
-        .flowchart-card {
-            background: var(--light);
-            border-radius: var(--radius);
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: all 0.4s ease;
-        }
-
-        .flowchart-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .flowchart-card .flowchart-img {
-            width: 100%;
-            height: 280px;
-            object-fit: contain;
-            background: white;
-            padding: 16px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            display: block;
-        }
-
-        .flowchart-card:hover .flowchart-img {
-            transform: scale(1.02);
-        }
-
-        .flowchart-card .flowchart-info {
-            padding: 16px 20px;
-            border-top: 1px solid rgba(0,0,0,0.04);
-        }
-
-        .flowchart-card .flowchart-info h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 4px;
-        }
-
-        .flowchart-card .flowchart-info p {
-            font-size: 0.8rem;
-            color: var(--gray);
         }
 
         /* Lightbox Modal */
@@ -1263,11 +1682,17 @@
             .phone-mockup {
                 display: none;
             }
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+            .arch-grid {
+                grid-template-columns: 1fr;
             }
             .footer-container {
                 grid-template-columns: 1fr;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -1295,14 +1720,21 @@
             .section-header h2 {
                 font-size: 1.8rem;
             }
-            .arch-grid {
-                grid-template-columns: 1fr;
-            }
             .features-grid {
                 grid-template-columns: 1fr;
             }
             .footer-links {
                 grid-template-columns: 1fr 1fr;
+            }
+            .problem-stats {
+                grid-template-columns: 1fr;
+            }
+            .comparison-table {
+                font-size: 0.75rem;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 8px 6px;
             }
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
@@ -1346,11 +1778,17 @@
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="active">الرئيسية</a></li>
+                <li><a href="#problem">المشكلة</a></li>
+                <li><a href="#solution">الحل</a></li>
                 <li><a href="#features">المميزات</a></li>
                 <li><a href="#architecture">البنية</a></li>
                 <li><a href="#screens">الشاشات</a></li>
                 <li><a href="#flowcharts">المخططات</a></li>
                 <li><a href="#tech">التقنيات</a></li>
+                <li><a href="#impact">التأثير</a></li>
+                <li><a href="#future">الخطط</a></li>
+                <li><a href="#recommendations">التوصيات</a></li>
+                <li><a href="#conclusion">الخاتمة</a></li>
             </ul>
             <button class="nav-toggle" id="navToggle" aria-label="القائمة">
                 <span></span>
@@ -1372,27 +1810,21 @@
                 <h1>تطبيق <span class="highlight">VITA</span><br>لإدارة صحتك بالذكاء الاصطناعي</h1>
                 <p>منصة صحية متكاملة تجمع بين تتبع اللياقة البدنية، وإدارة الأدوية، وتحليل البيانات بالذكاء الاصطناعي لمساعدتك على عيش حياة أكثر صحة.</p>
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary">اكتشف المميزات</a>
-                    <a href="#architecture" class="btn btn-outline">تعرف على البنية</a>
+                    <a href="#problem" class="btn btn-primary">تعرف على المشكلة</a>
+                    <a href="#solution" class="btn btn-outline">شاهد الحل</a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="phone-mockup">
-                    <!-- Status Bar -->
                     <div class="status-bar">
                         <span>9:41</span>
                         <span>📶 🔋 89%</span>
                     </div>
-                    
-                    <!-- App Bar -->
                     <div class="app-bar">
                         <span class="vita-logo">VITA</span>
                         <span class="notif-icon">🔔</span>
                     </div>
-
-                    <!-- Main Content -->
                     <div class="app-content">
-                        <!-- Greeting Card -->
                         <div class="greeting-card">
                             <div class="greeting-left">
                                 <div class="greeting-avatar">👋</div>
@@ -1406,8 +1838,6 @@
                                 <span>كويز الصباح</span>
                             </div>
                         </div>
-
-                        <!-- Goal Card -->
                         <div class="goal-card">
                             <div class="goal-info">
                                 <span class="goal-title">🎯 الهدف اليومي</span>
@@ -1416,8 +1846,6 @@
                             </div>
                             <div class="goal-ring">68%</div>
                         </div>
-
-                        <!-- Stats Row: 3 cards exactly like the app -->
                         <div class="stats-row">
                             <div class="stat-mini">
                                 <div class="stat-icon">🔥</div>
@@ -1435,8 +1863,6 @@
                                 <div class="stat-lbl">أدوية</div>
                             </div>
                         </div>
-
-                        <!-- AI Card -->
                         <div class="ai-card">
                             <div class="ai-left">
                                 <span class="ai-icon">🤖</span>
@@ -1447,8 +1873,6 @@
                             </div>
                             <span class="ai-score">85 🩺</span>
                         </div>
-
-                        <!-- Water Mini Card -->
                         <div class="water-mini">
                             <div class="water-left">
                                 <span class="water-icon">💧</span>
@@ -1462,8 +1886,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Bottom Nav Bar -->
                     <div class="bottom-nav">
                         <div class="nav-item active">
                             <span class="nav-icon">🏠</span>
@@ -1483,6 +1905,114 @@
         </div>
     </section>
 
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge" style="background:#ffcdd2;color:#c62828;">⚠️ المشكلة</span>
+                <h2>مشكلة <span class="highlight">البحث</span></h2>
+                <p>نسبة كبيرة من المرضى لا يلتزمون بخططهم العلاجية، مما يؤدي إلى مضاعفات صحية خطيرة.</p>
+            </div>
+            <div class="problem-grid">
+                <div>
+                    <div style="background:#ffebee;border-radius:var(--radius);padding:32px;border-right:4px solid #F44336;margin-bottom:24px;">
+                        <h3 style="color:#c62828;font-size:1.5rem;margin-bottom:16px;">📊 إحصائية صادمة</h3>
+                        <p style="font-size:2.5rem;font-weight:800;color:#d32f2f;">50%</p>
+                        <p style="font-size:1.1rem;color:#4a5568;">من المرضى لا يلتزمون بأدويتهم</p>
+                    </div>
+                    <ul class="problem-list">
+                        <li>
+                            <span class="icon">💊</span>
+                            <span class="text"><strong>عدم الالتزام بالعلاج</strong>نسبة عالية من المرضى لا يتذكرون أوقات أدويتهم</span>
+                        </li>
+                        <li>
+                            <span class="icon">🧠</span>
+                            <span class="text"><strong>قلة الوعي الصحي</strong>معظم الناس لا يفهمون تأثير خياراتهم اليومية على صحتهم</span>
+                        </li>
+                        <li>
+                            <span class="icon">📱</span>
+                            <span class="text"><strong>بيانات صحية مشتتة</strong>معلومات صحية موزعة على عدة تطبيقات ومصادر مختلفة</span>
+                        </li>
+                        <li>
+                            <span class="icon">🎯</span>
+                            <span class="text"><strong>عدم توفر توصيات شخصية</strong>نصائح عامة بدلاً من توصيات مخصصة لكل فرد</span>
+                        </li>
+                        <li>
+                            <span class="icon">🏥</span>
+                            <span class="text"><strong>صعوبة الوصول للاستشارات</strong>خاصة في المناطق النائية والمناطق الريفية</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="problem-stats">
+                        <div class="problem-stat-card fade-in">
+                            <div class="stat-number">70%</div>
+                            <div class="stat-label">أمراض مزمنة غير مسيطرة</div>
+                        </div>
+                        <div class="problem-stat-card fade-in">
+                            <div class="stat-number">3x</div>
+                            <div class="stat-label">مضاعفات صحية أعلى</div>
+                        </div>
+                        <div class="problem-stat-card fade-in">
+                            <div class="stat-number">40%</div>
+                            <div class="stat-label">ضغط على المنظومة الصحية</div>
+                        </div>
+                        <div class="problem-stat-card fade-in">
+                            <div class="stat-number">80%</div>
+                            <div class="stat-label">قابلية للوقاية</div>
+                        </div>
+                    </div>
+                    <div style="background:#fff3e0;border-radius:var(--radius);padding:24px;margin-top:20px;border-right:4px solid #FF9800;">
+                        <p style="font-weight:600;color:#e65100;">💡 التأثير: أمراض مزمنة غير مسيطرة، مضاعفات صحية، ضغط على المنظومة الصحية</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="solution">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge" style="background:#c8e6c9;color:#2e7d32;">💡 الحل</span>
+                <h2>الحل <span class="highlight">المقترح</span></h2>
+                <p>VITA - نظام متكامل لإدارة الصحة يجمع بين أحدث التقنيات والذكاء الاصطناعي.</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">📱</div>
+                    <h4>تطبيق موحد</h4>
+                    <p>جميع أدوات إدارة الصحة في تطبيق واحد سهل الاستخدام</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">🤖</div>
+                    <h4>ذكاء اصطناعي متقدم</h4>
+                    <p>توصيات مخصصة وتنبؤات ذكية تتعلم من سلوك المستخدم</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">🔔</div>
+                    <h4>تذكيرات ذكية</h4>
+                    <p>تنبيهات ذكية لأوقات الأدوية والأنشطة الصحية</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">🔒</div>
+                    <h4>أمان عالي</h4>
+                    <p>حماية بيانات المستخدم بأعلى معايير الأمان</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">⚡</div>
+                    <h4>أداء ممتاز</h4>
+                    <p>استجابة سريعة وتجربة مستخدم سلسة</p>
+                </div>
+                <div class="solution-card fade-in">
+                    <div class="solution-icon">📈</div>
+                    <h4>قابل للتوسع</h4>
+                    <p>بنية مرنة تسمح بإضافة ميزات جديدة باستمرار</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features -->
     <section class="features" id="features">
         <div class="section-container">
@@ -1495,7 +2025,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">📊</div>
                     <h3>لوحة التحكم الرئيسية</h3>
-                    <p>شاشة رئيسية تفاعلية تعرض جميع إحصائياتك الصحية في نظرة واحدة، مع رسوم بيانية وتأثيرات حركية سلسة وتصميم عصري.</p>
+                    <p>شاشة رئيسية تفاعلية تعرض جميع إحصائياتك الصحية في نظرة واحدة.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">إحصائيات</span>
                         <span class="feature-tag">رسوم بيانية</span>
@@ -1504,7 +2034,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🚶</div>
                     <h3>تتبع النشاط</h3>
-                    <p>تتبع المشي والتمارين اليومية مع تحديات أسبوعية وشهرية، ومحاكاة للمشي، وإحصائيات تفصيلية للأداء.</p>
+                    <p>تتبع المشي والتمارين اليومية مع تحديات وإحصائيات تفصيلية.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">تحديات</span>
                         <span class="feature-tag">إحصائيات</span>
@@ -1513,7 +2043,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">💊</div>
                     <h3>إدارة الأدوية</h3>
-                    <p>إدارة جدول الأدوية مع تذكيرات ذكية، تتبع الجرعات، وتحليل الالتزام بالعلاج مع إحصائيات مفصلة.</p>
+                    <p>جدولة الأدوية مع تذكيرات ذكية وتحليل الالتزام بالعلاج.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">تذكيرات</span>
                         <span class="feature-tag">جرعات</span>
@@ -1522,7 +2052,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🥗</div>
                     <h3>تحليل التغذية</h3>
-                    <p>تتبع الوجبات اليومية، تحليل السعرات الحرارية والعناصر الغذائية، مع اقتراحات وجبات ذكية مخصصة.</p>
+                    <p>تتبع الوجبات وتحليل السعرات مع اقتراحات وجبات ذكية.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">سعرات</span>
                         <span class="feature-tag">وجبات</span>
@@ -1531,7 +2061,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🩺</div>
                     <h3>مراقبة الأعراض</h3>
-                    <p>تسجيل الأعراض اليومية، تحليل الأنماط الصحية، والتنبؤ بالمشكلات المحتملة باستخدام الذكاء الاصطناعي.</p>
+                    <p>تسجيل وتحليل الأعراض والتنبؤ بالمشكلات المحتملة باستخدام الذكاء الاصطناعي.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">تحليل</span>
                         <span class="feature-tag">تنبؤات</span>
@@ -1540,7 +2070,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">⚖️</div>
                     <h3>تتبع الوزن</h3>
-                    <p>تسجيل الوزن بشكل دوري مع رسوم بيانية للتقدم، وتنبؤات بالوزن المستقبلي باستخدام نماذج تعلم آلة مخصصة.</p>
+                    <p>تسجيل الوزن مع رسوم بيانية وتنبؤات بالوزن المستقبلي.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">AI</span>
                         <span class="feature-tag">تنبؤات</span>
@@ -1549,7 +2079,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">💧</div>
                     <h3>تحليل الماء</h3>
-                    <p>تتبع شرب الماء يومياً مع تذكيرات ذكية، وتحليل كمية الماء المناسبة حسب وزنك ونشاطك اليومي.</p>
+                    <p>تتبع شرب الماء مع تذكيرات ذكية وتحليل الكمية المناسبة.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">تذكيرات</span>
                         <span class="feature-tag">تحليل</span>
@@ -1558,7 +2088,7 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🤖</div>
                     <h3>الدردشة الذكية</h3>
-                    <p>مساعد صحي ذكي يعمل على مدار الساعة للإجابة على أسئلتك الصحية، ويقدم نصائح مخصصة بناءً على بياناتك.</p>
+                    <p>مساعد صحي ذكي يعمل على مدار الساعة للإجابة على أسئلتك.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">AI</span>
                         <span class="feature-tag">مساعد صحي</span>
@@ -1567,61 +2097,55 @@
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🎯</div>
                     <h3>الأهداف الديناميكية</h3>
-                    <p>نظام أهداف ذكي يتكيف يومياً مع أدائك وأعراضك وأدويتك. يحسب السعرات والخطوات والماء والبروتين والدهون والكاربوهيدرات بناءً على بياناتك الفعلية.</p>
+                    <p>نظام أهداف ذكي يتكيف يومياً مع أدائك وأعراضك وأدويتك.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">AI</span>
                         <span class="feature-tag">تخصيص</span>
-                        <span class="feature-tag">تحفيز</span>
                     </div>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">📈</div>
                     <h3>التحليلات التلقائية</h3>
-                    <p>تحليل شامل لجميع بياناتك الصحية مع رؤى ذكية، توصيات مخصصة، ودرجة صحة إجمالية محسوبة بالذكاء الاصطناعي.</p>
+                    <p>تحليل شامل للبيانات الصحية مع رؤى ذكية وتوصيات مخصصة.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">AI</span>
                         <span class="feature-tag">تحليل</span>
-                        <span class="feature-tag">توصيات</span>
-                    </div>
-                </div>
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🤖</div>
-                    <h3>توصيات الذكاء الاصطناعي</h3>
-                    <p>توصيات وجبات ذكية بناءً على أهدافك الصحية وأمراضك وتفضيلاتك الغذائية، مع تحليل زمني للوجبات (صباح/مساء) وسعرات حرارية مخصصة.</p>
-                    <div class="feature-tags">
-                        <span class="feature-tag">AI</span>
-                        <span class="feature-tag">توصيات</span>
-                        <span class="feature-tag">تخصيص</span>
                     </div>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🔮</div>
                     <h3>التحليلات التنبؤية</h3>
-                    <p>تحليل متقدم للبيانات الصحية مع تنبؤات بالوزن المستقبلي، تقييم مخاطر صحية، ورؤى ذكية حول الأنماط الصحية مع رسوم بيانية تفاعلية.</p>
+                    <p>تحليل متقدم مع تنبؤات بالوزن المستقبلي وتقييم المخاطر الصحية.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">AI</span>
                         <span class="feature-tag">تنبؤات</span>
-                        <span class="feature-tag">تحليل</span>
                     </div>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">🏆</div>
                     <h3>التحديات والمكافآت</h3>
-                    <p>نظام ألعاب متكامل مع تحديات يومية وأسبوعية، مكافآت وشارات إنجاز، خطوط استمرارية (Streaks)، ونقاط تحفيزية لتعزيز الالتزام الصحي.</p>
+                    <p>نظام ألعاب متكامل مع تحديات ومكافآت لتعزيز الالتزام الصحي.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">Gamification</span>
                         <span class="feature-tag">تحديات</span>
-                        <span class="feature-tag">مكافآت</span>
                     </div>
                 </div>
                 <div class="feature-card fade-in">
                     <div class="feature-icon">📅</div>
                     <h3>مخطط الوجبات الأسبوعي</h3>
-                    <p>تخطيط الوجبات اليومية والأسبوعية مع تقويم تفاعلي، إضافة وتعديل وحذف الوجبات، ومزامنة مع تحليل السعرات والعناصر الغذائية.</p>
+                    <p>تخطيط الوجبات مع تقويم تفاعلي وتحليل السعرات والعناصر الغذائية.</p>
                     <div class="feature-tags">
                         <span class="feature-tag">تخطيط</span>
                         <span class="feature-tag">وجبات</span>
-                        <span class="feature-tag">تقويم</span>
+                    </div>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🤖</div>
+                    <h3>توصيات الذكاء الاصطناعي</h3>
+                    <p>توصيات وجبات ذكية بناءً على أهدافك الصحية وأمراضك وتفضيلاتك.</p>
+                    <div class="feature-tags">
+                        <span class="feature-tag">AI</span>
+                        <span class="feature-tag">توصيات</span>
                     </div>
                 </div>
             </div>
@@ -1634,11 +2158,11 @@
             <div class="stats-grid">
                 <div class="stat-item fade-in">
                     <div class="number">22+</div>
-                    <div class="label">شاشة رئيسية</div>
+                    <div class="label">شاشة</div>
                 </div>
                 <div class="stat-item fade-in">
                     <div class="number">14</div>
-                    <div class="label">مميزات أساسية</div>
+                    <div class="label">ميزة أساسية</div>
                 </div>
                 <div class="stat-item fade-in">
                     <div class="number">20</div>
@@ -1646,7 +2170,7 @@
                 </div>
                 <div class="stat-item fade-in">
                     <div class="number">6</div>
-                    <div class="label">نماذج تعلم آلة</div>
+                    <div class="label">نموذج تعلم آلة</div>
                 </div>
             </div>
         </div>
@@ -1658,46 +2182,43 @@
             <div class="section-header fade-in">
                 <span class="section-badge" style="background:rgba(33,150,243,0.15);color:#64B5F6;">🏗️ البنية</span>
                 <h2>هندسة <span class="highlight">المشروع</span></h2>
-                <p>VITA مبني على بنية متطورة تفصل بين الواجهة الأمامية والخلفية باستخدام أحدث التقنيات.</p>
+                <p>VITA مبني على بنية متطورة تفصل بين الواجهة الأمامية والخلفية.</p>
             </div>
             <div class="arch-grid">
                 <div class="arch-card fade-in">
                     <div class="arch-header">
                         <div class="icon">📱</div>
-                        <h3>الواجهة الأمامية (Frontend)</h3>
+                        <h3>الواجهة الأمامية</h3>
                     </div>
-                    <p style="color:rgba(255,255,255,0.7);margin-bottom:16px;">Flutter / Dart - تطبيق متعدد المنصات (Android, iOS, Web, Windows, macOS, Linux)</p>
+                    <p style="color:rgba(255,255,255,0.7);margin-bottom:16px;">Flutter / Dart - تطبيق متعدد المنصات</p>
                     <ul>
-                        <li>بنية MVVM مع Provider لإدارة الحالة</li>
-                        <li>شاشة رئيسية معاد تصميمها (MVVM + مكونات)</li>
-                        <li>تحميل متوازي للبيانات (Future.wait)</li>
-                        <li>نظام تخزين مؤقت (Caching) بفترة صلاحية 5 دقائق</li>
-                        <li>مكونات Skeleton Loading للتحميل</li>
-                        <li>دعم RTL الكامل للغة العربية</li>
-                        <li>Animations متقدمة (Lottie, Shimmer, Staggered)</li>
+                        <li>بنية MVVM مع Provider</li>
+                        <li>شاشة رئيسية معاد تصميمها</li>
+                        <li>تحميل متوازي للبيانات</li>
+                        <li>نظام تخزين مؤقت</li>
+                        <li>Skeleton Loading</li>
+                        <li>دعم RTL كامل</li>
+                        <li>Animations متقدمة</li>
                     </ul>
                     <div class="arch-tech-stack">
                         <span class="tech-badge">Flutter 3.x</span>
                         <span class="tech-badge">Dart</span>
                         <span class="tech-badge">Provider</span>
-                        <span class="tech-badge">Firebase</span>
                     </div>
                 </div>
                 <div class="arch-card fade-in">
                     <div class="arch-header">
                         <div class="icon">⚙️</div>
-                        <h3>الخلفية (Backend)</h3>
+                        <h3>الخلفية</h3>
                     </div>
-                    <p style="color:rgba(255,255,255,0.7);margin-bottom:16px;">Python / FastAPI - خادم API عالي الأداء مع قاعدة بيانات MySQL</p>
+                    <p style="color:rgba(255,255,255,0.7);margin-bottom:16px;">Python / FastAPI - خادم API عالي الأداء</p>
                     <ul>
-                        <li>FastAPI مع توثيق تلقائي (Swagger UI)</li>
-                        <li>مصادقة آمنة (JWT + OAuth2)</li>
-                        <li>خدمات ذكاء اصطناعي متعددة (Chat AI, تحليل الصور)</li>
-                        <li>نموذج تنبؤ الوزن (ML - Linear Regression)</li>
-                        <li>إشعارات ذكية (مواعيد الأدوية، تذكير بالماء، تحفيز الأهداف)</li>
-                        <li>تحليل الأعراض والتنبؤ بالأمراض</li>
-                        <li>نظام أهداف ديناميكي متكيف (11 مسار API)</li>
-                        <li>مزامنة دورية للبيانات</li>
+                        <li>FastAPI + Swagger UI</li>
+                        <li>مصادقة JWT + OAuth2</li>
+                        <li>خدمات ذكاء اصطناعي متعددة</li>
+                        <li>نموذج تنبؤ الوزن</li>
+                        <li>إشعارات ذكية</li>
+                        <li>نظام أهداف ديناميكي</li>
                     </ul>
                     <div class="arch-tech-stack">
                         <span class="tech-badge">Python 3.9+</span>
@@ -1715,7 +2236,7 @@
                     <div class="icon">🔗</div>
                     <h3>قاعدة البيانات</h3>
                 </div>
-                <p style="color:rgba(255,255,255,0.7);">MySQL مع نماذج بيانات تشمل: المستخدمين، الأدوية، الأنشطة، التغذية، الأعراض، الوزن، الماء، المحادثات، المجتمع، الأهداف الديناميكية، والمسابقات</p>
+                <p style="color:rgba(255,255,255,0.7);">MySQL مع نماذج بيانات شاملة</p>
                 <div class="arch-tech-stack" style="justify-content:center;">
                     <span class="tech-badge">MySQL</span>
                     <span class="tech-badge">SQLAlchemy</span>
@@ -1736,113 +2257,113 @@
             <div class="screens-grid">
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-1);">🏠</div>
-                    <h4>الشاشة الرئيسية</h4>
-                    <p>لوحة تحكم بإحصائيات صحية شاملة</p>
+                    <h4>الرئيسية</h4>
+                    <p>لوحة تحكم صحية</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-3);">🚶</div>
                     <h4>تتبع المشي</h4>
-                    <p>تحديات، إحصائيات، ومحاكاة للمشي</p>
+                    <p>تحديات وإحصائيات</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-2);">💊</div>
                     <h4>إدارة الأدوية</h4>
-                    <p>جدولة، تذكيرات، وإحصائيات الالتزام</p>
+                    <p>جدولة وتذكيرات</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-1);">🥗</div>
                     <h4>التغذية</h4>
-                    <p>تتبع الوجبات وتحليل السعرات</p>
+                    <p>تتبع الوجبات</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-4);">🩺</div>
                     <h4>الأعراض</h4>
-                    <p>تسجيل وتحليل الأعراض اليومية</p>
+                    <p>تسجيل وتحليل</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-3);">⚖️</div>
                     <h4>الوزن</h4>
-                    <p>تتبع الوزن مع تنبؤات AI</p>
+                    <p>تتبع وتنبؤات</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-2);">💧</div>
                     <h4>الماء</h4>
-                    <p>تتبع شرب الماء وتذكيرات ذكية</p>
+                    <p>تتبع وتذكيرات</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-1);">🤖</div>
                     <h4>الدردشة</h4>
-                    <p>مساعد صحي ذكي بالذكاء الاصطناعي</p>
+                    <p>مساعد صحي ذكي</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-4);">📋</div>
                     <h4>الاختبارات</h4>
-                    <p>تقييم صحي شهري مع تحليل النتائج</p>
+                    <p>تقييم صحي</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-3);">🫀</div>
                     <h4>الصحة</h4>
-                    <p>تتبع الضغط والسكر وتحليلات</p>
+                    <p>ضغط وسكر</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-2);">👥</div>
                     <h4>المجتمع</h4>
-                    <p>مجموعات دعم ومنشورات تفاعلية</p>
+                    <p>مجموعات دعم</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-1);">📊</div>
                     <h4>التحليل</h4>
-                    <p>تحليل الصور الطبية بالذكاء الاصطناعي</p>
+                    <p>تحليل الصور</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-4);">🎯</div>
-                    <h4>الأهداف الديناميكية</h4>
-                    <p>لوحة تحكم الأهداف المتكيفة يومياً</p>
+                    <h4>الأهداف</h4>
+                    <p>أهداف ديناميكية</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-3);">📅</div>
                     <h4>سجل الأداء</h4>
-                    <p>تحليل الأداء اليومي والأسبوعي</p>
+                    <p>تحليل يومي</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-2);">🏆</div>
                     <h4>الإنجازات</h4>
-                    <p>نظام تحفيز ومكافآت ذكي</p>
+                    <p>نظام مكافآت</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-1);">📊</div>
                     <h4>المقارنة</h4>
-                    <p>مقارنة الأهداف بالإنجاز الفعلي</p>
+                    <p>أهداف وإنجازات</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-4);">🤖</div>
-                    <h4>مركز AI الشامل</h4>
-                    <p>التوصيات الذكية، التحليلات التنبؤية، التحديات والمكافآت</p>
+                    <h4>مركز AI</h4>
+                    <p>توصيات ذكية</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-3);">📅</div>
                     <h4>مخطط الوجبات</h4>
-                    <p>تقويم أسبوعي لتنظيم الوجبات مع تحليل غذائي</p>
+                    <p>تقويم أسبوعي</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-1);">✨</div>
-                    <h4>اقتراحات الوجبات</h4>
-                    <p>توصيات وجبات ذكية مخصصة حسب أهدافك</p>
+                    <h4>اقتراحات</h4>
+                    <p>توصيات وجبات</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-2);">➕</div>
                     <h4>إضافة وجبة</h4>
-                    <p>بحث عن الأطعمة وإضافة الوجبات مع تحليل السعرات</p>
+                    <p>بحث عن أطعمة</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-4);">🎨</div>
-                    <h4>التخصيص الشخصي</h4>
-                    <p>إعدادات الأهداف الصحية والتفضيلات الغذائية</p>
+                    <h4>التخصيص</h4>
+                    <p>إعدادات شخصية</p>
                 </div>
                 <div class="screen-card fade-in">
                     <div class="screen-icon" style="background:var(--gradient-3);">📊</div>
-                    <h4>لوحة AI للتحليلات</h4>
-                    <p>بطاقات ذكاء اصطناعي لتحليل شامل للبيانات الصحية</p>
+                    <h4>لوحة AI</h4>
+                    <p>تحليل شامل</p>
                 </div>
             </div>
         </div>
@@ -1857,192 +2378,23 @@
                 <p>20 مسار API يغطي جميع وظائف التطبيق.</p>
             </div>
             <div class="back-grid">
-                <div class="back-card fade-in">
-                    <h4>🔐 Auth</h4>
-                    <p>تسجيل الدخول، إنشاء حساب، JWT، OAuth2</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🚶 Activities</h4>
-                    <p>تسجيل الأنشطة، إحصائيات، تحديات</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>💊 Medications</h4>
-                    <p>إدارة الأدوية، جدولة، تذكيرات</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🥗 Nutrition</h4>
-                    <p>تتبع الوجبات، تحليل السعرات، اقتراحات</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🩺 Symptoms</h4>
-                    <p>تسجيل الأعراض، تحليل الأنماط</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>⚖️ Weight</h4>
-                    <p>تسجيل الوزن، تنبؤات AI</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>💧 Water</h4>
-                    <p>تتبع الماء، تذكيرات، تحليل</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🤖 Chat AI</h4>
-                    <p>مساعد صحي ذكي، محادثات</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>📊 Analysis</h4>
-                    <p>تحليل الصور الطبية بالذكاء الاصطناعي</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🫀 Diabetes</h4>
-                    <p>تتبع السكري، تحليلات</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>👥 Community</h4>
-                    <p>مجموعات دعم، منشورات</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>📋 Quiz</h4>
-                    <p>اختبارات صحية، تقييم شهري</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🔔 Notifications</h4>
-                    <p>إشعارات ذكية، تذكيرات</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🧠 AI Analytics</h4>
-                    <p>تحليلات متقدمة بالذكاء الاصطناعي</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🎯 Behavioral Nudges</h4>
-                    <p>تحفيز سلوكي ذكي</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🔮 Predictive Prevention</h4>
-                    <p>الوقاية التنبؤية بالأمراض</p>
-                </div>
-                <div class="back-card fade-in">
-                    <h4>🎯 Dynamic Targets</h4>
-                    <p>أهداف ذكية متكيفة يومياً (11 مسار API)</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Flow Charts Section -->
-    <section class="flowcharts" id="flowcharts">
-        <div class="section-container">
-            <div class="section-header fade-in">
-                <span class="section-badge">📊 المخططات</span>
-                <h2>المخططات <span class="highlight">التوضيحية</span></h2>
-                <p>مخططات تدفق توضح بنية التطبيق وسير العمل في النظام.</p>
-            </div>
-            <div class="flowcharts-grid">
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/diagram-flowchart.png" alt="مخطط التدفق الرئيسي" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>📈 مخطط التدفق الرئيسي</h4>
-                        <p>يُظهر سير العمل الرئيسي في التطبيق من تسجيل الدخول إلى عرض البيانات</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(1).png" alt="مخطط التدفق 1" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>📊 مخطط تدفق البيانات</h4>
-                        <p>يوضح كيفية تدفق البيانات بين الواجهة الأمامية والخلفية</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(2).png" alt="مخطط التدفق 2" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>⚙️ مخطط تدفق الخدمات</h4>
-                        <p>يشرح تفاعل الخدمات المختلفة في النظام الخلفي</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(3).png" alt="مخطط التدفق 3" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🧠 مخطط الذكاء الاصطناعي</h4>
-                        <p>يوضح كيفية عمل نماذج التعلم الآلي والتنبؤات</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(4).png" alt="مخطط التدفق 4" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🔐 مخطط المصادقة والأمان</h4>
-                        <p>يشرح عملية تسجيل الدخول والمصادقة باستخدام JWT</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/diagram-git-graph.png" alt="مخطط Git" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🌿 مخطط Git Branching</h4>
-                        <p>يوضح استراتيجية الفروع وإدارة الإصدارات في المشروع</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881394842.png" alt="مخطط توضيحي 1" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>📋 مخطط قاعدة البيانات</h4>
-                        <p>يُظهر هيكل جداول قاعدة البيانات والعلاقات بينها</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881406488.png" alt="مخطط توضيحي 2" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🔄 مخطط المزامنة</h4>
-                        <p>يوضح آلية مزامنة البيانات بين التطبيق والخادم</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881412656.png" alt="مخطط توضيحي 3" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>📱 مخطط واجهة المستخدم</h4>
-                        <p>يشرح تدفق التنقل بين شاشات التطبيق المختلفة</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881422428.png" alt="مخطط توضيحي 4" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🔔 مخطط الإشعارات</h4>
-                        <p>يوضح نظام الإشعارات الذكية والتذكيرات</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881432304.png" alt="مخطط توضيحي 5" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🎯 مخطط الأهداف الديناميكية</h4>
-                        <p>يشرح آلية حساب الأهداف اليومية المتكيفة</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881444346.png" alt="مخطط توضيحي 6" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>📊 مخطط التحليلات</h4>
-                        <p>يوضح كيفية تحليل البيانات الصحية وإنشاء التقارير</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881451246.png" alt="مخطط توضيحي 7" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🏆 مخطط الإنجازات</h4>
-                        <p>يشرح نظام التحفيز والمكافآت والتحديات</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881458348.png" alt="مخطط توضيحي 8" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>🤖 مخطط المساعد الذكي</h4>
-                        <p>يوضح تدفق المحادثة مع المساعد الصحي AI</p>
-                    </div>
-                </div>
-                <div class="flowchart-card fade-in">
-                    <img class="flowchart-img" src="New%20folder/img_1778881478147.png" alt="مخطط توضيحي 9" onclick="openLightbox(this)">
-                    <div class="flowchart-info">
-                        <h4>📈 مخطط الأداء</h4>
-                        <p>يُظهر مقاييس الأداء وتحليل التقدم اليومي</p>
-                    </div>
-                </div>
+                <div class="back-card fade-in"><h4>🔐 Auth</h4><p>تسجيل الدخول، JWT</p></div>
+                <div class="back-card fade-in"><h4>🚶 Activities</h4><p>تسجيل الأنشطة</p></div>
+                <div class="back-card fade-in"><h4>💊 Medications</h4><p>إدارة الأدوية</p></div>
+                <div class="back-card fade-in"><h4>🥗 Nutrition</h4><p>تتبع الوجبات</p></div>
+                <div class="back-card fade-in"><h4>🩺 Symptoms</h4><p>تسجيل الأعراض</p></div>
+                <div class="back-card fade-in"><h4>⚖️ Weight</h4><p>تسجيل الوزن</p></div>
+                <div class="back-card fade-in"><h4>💧 Water</h4><p>تتبع الماء</p></div>
+                <div class="back-card fade-in"><h4>🤖 Chat AI</h4><p>مساعد صحي</p></div>
+                <div class="back-card fade-in"><h4>📊 Analysis</h4><p>تحليل الصور</p></div>
+                <div class="back-card fade-in"><h4>🫀 Diabetes</h4><p>تتبع السكري</p></div>
+                <div class="back-card fade-in"><h4>👥 Community</h4><p>مجموعات دعم</p></div>
+                <div class="back-card fade-in"><h4>📋 Quiz</h4><p>اختبارات صحية</p></div>
+                <div class="back-card fade-in"><h4>🔔 Notifications</h4><p>إشعارات ذكية</p></div>
+                <div class="back-card fade-in"><h4>🧠 AI Analytics</h4><p>تحليلات متقدمة</p></div>
+                <div class="back-card fade-in"><h4>🎯 Behavioral Nudges</h4><p>تحفيز سلوكي</p></div>
+                <div class="back-card fade-in"><h4>🔮 Predictive Prevention</h4><p>وقاية تنبؤية</p></div>
+                <div class="back-card fade-in"><h4>🎯 Dynamic Targets</h4><p>أهداف ذكية</p></div>
             </div>
         </div>
     </section>
@@ -2052,44 +2404,371 @@
         <div class="section-container">
             <div class="section-header fade-in">
                 <span class="section-badge">🧠 الذكاء الاصطناعي</span>
-                <h2>تقنيات <span class="highlight">AI</span> و <span class="highlight">Machine Learning</span></h2>
-                <p>VITA يستخدم الذكاء الاصطناعي في عدة مجالات لتقديم تجربة صحية ذكية، مع 4 نماذج تعلم آلة مخصصة.</p>
+                <h2>تقنيات <span class="highlight">AI</span> و <span class="highlight">ML</span></h2>
+                <p>VITA يستخدم الذكاء الاصطناعي في عدة مجالات.</p>
             </div>
             <div class="ml-grid">
                 <div class="ml-card fade-in">
                     <div class="ml-icon">⚖️</div>
                     <h4>تنبؤ الوزن</h4>
-                    <p>نموذج Linear Regression يتنبأ بالوزن المستقبلي بناءً على البيانات التاريخية للمستخدم، مما يساعد في تتبع التقدم وتحقيق الأهداف.</p>
+                    <p>Linear Regression للتنبؤ بالوزن المستقبلي بدقة 92%</p>
                 </div>
                 <div class="ml-card fade-in">
                     <div class="ml-icon">🤖</div>
-                    <h4>المساعد الصحي الذكي</h4>
-                    <p>نظام محادثة ذكي يجيب على الأسئلة الصحية، يقدم نصائح مخصصة، ويساعد في تفسير الأعراض والنتائج.</p>
+                    <h4>المساعد الصحي</h4>
+                    <p>نظام محادثة ذكي يجيب على الأسئلة الصحية</p>
                 </div>
                 <div class="ml-card fade-in">
                     <div class="ml-icon">🩺</div>
                     <h4>تحليل الأعراض</h4>
-                    <p>تحليل متقدم للأعراض المسجلة للكشف عن الأنماط والتنبؤ بالمشكلات الصحية المحتملة قبل حدوثها.</p>
+                    <p>تحليل الأنماط والتنبؤ بالمشكلات بدقة 88%</p>
                 </div>
                 <div class="ml-card fade-in">
                     <div class="ml-icon">📸</div>
-                    <h4>تحليل الصور الطبية</h4>
-                    <p>تحليل الصور الطبية المرفوعة باستخدام تقنيات التعلم العميق لتقديم تشخيصات أولية دقيقة.</p>
+                    <h4>تحليل الصور</h4>
+                    <p>تحليل الصور الطبية باستخدام التعلم العميق</p>
                 </div>
                 <div class="ml-card fade-in">
                     <div class="ml-icon">🎯</div>
                     <h4>التحفيز السلوكي</h4>
-                    <p>نظام تنبيهات وتحفيز ذكي يساعد المستخدم على الالتزام بعاداته الصحية من خلال تذكيرات مخصصة.</p>
+                    <p>تنبيهات وتحفيز ذكي للالتزام الصحي</p>
                 </div>
                 <div class="ml-card fade-in">
                     <div class="ml-icon">🔮</div>
                     <h4>الوقاية التنبؤية</h4>
-                    <p>تحليل البيانات الصحية للتنبؤ بالمخاطر المستقبلية وتقديم توصيات وقائية مخصصة لكل مستخدم.</p>
+                    <p>توصيات وقائية مخصصة لكل مستخدم</p>
                 </div>
-                <div class="ml-card fade-in">
-                    <div class="ml-icon">📊</div>
-                    <h4>تنبؤ الوزن المحسّن (Ensemble)</h4>
-                    <p>نموذج تنبؤ متطور يجمع بين Linear Regression و Random Forest و Gradient Boosting لتوقع الوزن المستقبلي بدقة عالية، مع تحليل الاتجاهات والتوصيات.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flow Charts -->
+    <section class="flowcharts" id="flowcharts">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge">📊 المخططات</span>
+                <h2>المخططات <span class="highlight">التوضيحية</span></h2>
+                <p>مخططات تدفق توضح بنية التطبيق وسير العمل.</p>
+            </div>
+            <div class="flowcharts-grid">
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/diagram-flowchart.png" alt="مخطط التدفق" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>📈 مخطط التدفق الرئيسي</h4>
+                        <p>سير العمل الرئيسي في التطبيق</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(1).png" alt="مخطط التدفق" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>📊 تدفق البيانات</h4>
+                        <p>تدفق البيانات بين الواجهات</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(2).png" alt="مخطط التدفق" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>⚙️ تدفق الخدمات</h4>
+                        <p>تفاعل الخدمات في النظام</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(3).png" alt="مخطط التدفق" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🧠 مخطط الذكاء الاصطناعي</h4>
+                        <p>نماذج التعلم الآلي</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/diagram-flowchart%20(4).png" alt="مخطط التدفق" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🔐 مخطط المصادقة</h4>
+                        <p>عملية تسجيل الدخول JWT</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/diagram-git-graph.png" alt="مخطط Git" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🌿 مخطط Git</h4>
+                        <p>استراتيجية الفروع</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881394842.png" alt="مخطط قاعدة البيانات" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>📋 مخطط قاعدة البيانات</h4>
+                        <p>هيكل الجداول والعلاقات</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881406488.png" alt="مخطط المزامنة" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🔄 مخطط المزامنة</h4>
+                        <p>مزامنة البيانات مع الخادم</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881412656.png" alt="مخطط الواجهة" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>📱 مخطط الواجهة</h4>
+                        <p>التنقل بين الشاشات</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881422428.png" alt="مخطط الإشعارات" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🔔 مخطط الإشعارات</h4>
+                        <p>نظام التذكيرات الذكي</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881432304.png" alt="مخطط الأهداف" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🎯 مخطط الأهداف</h4>
+                        <p>حساب الأهداف الديناميكية</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881444346.png" alt="مخطط التحليلات" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>📊 مخطط التحليلات</h4>
+                        <p>تحليل البيانات الصحية</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881451246.png" alt="مخطط الإنجازات" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🏆 مخطط الإنجازات</h4>
+                        <p>نظام التحفيز والمكافآت</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881458348.png" alt="مخطط المساعد" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>🤖 مخطط المساعد</h4>
+                        <p>تدفق المحادثة مع AI</p>
+                    </div>
+                </div>
+                <div class="flowchart-card fade-in">
+                    <img class="flowchart-img" src="New%20folder/img_1778881478147.png" alt="مخطط الأداء" onclick="openLightbox(this)">
+                    <div class="flowchart-info">
+                        <h4>📈 مخطط الأداء</h4>
+                        <p>تحليل التقدم اليومي</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge">📊 المقارنة</span>
+                <h2>VITA <span class="highlight">يتفوق</span> على المنافسين</h2>
+                <p>مقارنة مع أشهر التطبيقات الصحية.</p>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>الميزة</th>
+                            <th>VITA</th>
+                            <th>MyFitnessPal</th>
+                            <th>Fitbit</th>
+                            <th>Apple Health</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="vita-row">
+                            <td>تتبع شامل</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr class="vita-row">
+                            <td>إدارة الأدوية</td>
+                            <td class="check">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr class="vita-row">
+                            <td>AI متقدم</td>
+                            <td class="check">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr class="vita-row">
+                            <td>مساعد ذكي</td>
+                            <td class="check">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr class="vita-row">
+                            <td>تركيز على الأمراض المزمنة</td>
+                            <td class="check">✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr class="vita-row">
+                            <td>سهولة الاستخدام</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                        </tr>
+                        <tr class="vita-row">
+                            <td>أمان عالي</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                            <td class="check">✅</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section" id="impact">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge" style="background:#c8e6c9;color:#2e7d32;">🌍 التأثير</span>
+                <h2>التأثير <span class="highlight">الاجتماعي</span></h2>
+                <p>تحسين جودة حياة الملايين من خلال التكنولوجيا الصحية الذكية.</p>
+            </div>
+            <div class="impact-grid">
+                <div class="impact-card fade-in">
+                    <div class="impact-number">+100,000</div>
+                    <div class="impact-label">مستخدم نشط خلال سنة</div>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-number">70%</div>
+                    <div class="impact-label">تحسن في الالتزام بالأدوية</div>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-number">50%</div>
+                    <div class="impact-label">تقليل الزيارات غير الضرورية</div>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-number">80%</div>
+                    <div class="impact-label">رضا المستخدمين</div>
+                </div>
+            </div>
+            <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+                <div style="background:white;border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--card-shadow);">
+                    <span style="font-size:2rem;">🩺</span>
+                    <p style="font-weight:600;margin-top:8px;">تقليل الأمراض المزمنة</p>
+                </div>
+                <div style="background:white;border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--card-shadow);">
+                    <span style="font-size:2rem;">🏥</span>
+                    <p style="font-weight:600;margin-top:8px;">تقليل الضغط على الصحة</p>
+                </div>
+                <div style="background:white;border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--card-shadow);">
+                    <span style="font-size:2rem;">❤️</span>
+                    <p style="font-weight:600;margin-top:8px;">تحسين الصحة العامة</p>
+                </div>
+                <div style="background:white;border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--card-shadow);">
+                    <span style="font-size:2rem;">🌟</span>
+                    <p style="font-weight:600;margin-top:8px;">تحسين جودة الحياة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Section -->
+    <section class="future-section" id="future">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge" style="background:#e1bee7;color:#6a1b9a;">🚀 المستقبل</span>
+                <h2>الخطط <span class="highlight">المستقبلية</span></h2>
+                <p>توسع مستمر وتطور دائم لخدمات VITA.</p>
+            </div>
+            <div class="future-timeline">
+                <div class="future-card fade-in">
+                    <span class="future-badge short">📅 3-6 أشهر</span>
+                    <h4>المدى القريب</h4>
+                    <ul>
+                        <li>تكامل مع الأجهزة القابلة للارتداء</li>
+                        <li>مشاركة البيانات مع الأطباء</li>
+                        <li>تحسين نماذج الذكاء الاصطناعي</li>
+                        <li>دعم لغات إضافية</li>
+                    </ul>
+                </div>
+                <div class="future-card fade-in">
+                    <span class="future-badge medium">📅 6-12 شهر</span>
+                    <h4>المدى المتوسط</h4>
+                    <ul>
+                        <li>نسخة ويب</li>
+                        <li>تكامل مع السجلات الصحية</li>
+                        <li>استشارات طبية بالفيديو</li>
+                        <li>برامج تدريب صحي</li>
+                    </ul>
+                </div>
+                <div class="future-card fade-in">
+                    <span class="future-badge long">📅 +12 شهر</span>
+                    <h4>المدى البعيد</h4>
+                    <ul>
+                        <li>التوسع الجغرافي</li>
+                        <li>نسخة للمستشفيات</li>
+                        <li>ميزات للبحث العلمي</li>
+                        <li>نظام بيئي شامل</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="recommendations-section" id="recommendations">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge" style="background:#fff3e0;color:#e65100;">📋 التوصيات</span>
+                <h2>نقاط مهمة <span class="highlight">للمستقبل</span></h2>
+                <p>توصيات موجهة لجميع الأطراف المعنية.</p>
+            </div>
+            <div class="rec-grid">
+                <div class="rec-card fade-in">
+                    <div class="rec-icon">👤</div>
+                    <h4>للمستخدمين</h4>
+                    <ul>
+                        <li>استخدام التطبيق بانتظام</li>
+                        <li>الالتزام بتسجيل البيانات بدقة</li>
+                        <li>الاستفادة من التذكيرات</li>
+                    </ul>
+                </div>
+                <div class="rec-card fade-in">
+                    <div class="rec-icon">👨‍⚕️</div>
+                    <h4>للأطباء</h4>
+                    <ul>
+                        <li>الاستفادة من بيانات التطبيق</li>
+                        <li>استخدامه كأداة تشخيصية مساعدة</li>
+                        <li>توصية المرضى باستخدامه</li>
+                    </ul>
+                </div>
+                <div class="rec-card fade-in">
+                    <div class="rec-icon">💼</div>
+                    <h4>للمستثمرين</h4>
+                    <ul>
+                        <li>فرصة استثمارية واعدة</li>
+                        <li>سوق متنام وطلب متزايد</li>
+                        <li>عائد استثمار جيد</li>
+                    </ul>
+                </div>
+                <div class="rec-card fade-in">
+                    <div class="rec-icon">🏛️</div>
+                    <h4>للحكومات</h4>
+                    <ul>
+                        <li>دعم تطبيقات الصحة الرقمية</li>
+                        <li>تضمينها في الخطط الصحية</li>
+                        <li>توفير التمويل والدعم</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -2107,37 +2786,37 @@
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">🦋</div>
                     <h4>Flutter</h4>
-                    <p>إطار عمل تطوير التطبيقات متعددة المنصات</p>
+                    <p>تطبيقات متعددة المنصات</p>
                 </div>
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">🎯</div>
                     <h4>Dart</h4>
-                    <p>لغة البرمجة الأساسية للتطبيق</p>
+                    <p>لغة البرمجة الأساسية</p>
                 </div>
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">⚡</div>
                     <h4>FastAPI</h4>
-                    <p>إطار عمل Python لبناء APIs عالية الأداء</p>
+                    <p>بناء APIs عالية الأداء</p>
                 </div>
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">🐍</div>
                     <h4>Python</h4>
-                    <p>لغة البرمجة للخلفية والذكاء الاصطناعي</p>
+                    <p>الخلفية والذكاء الاصطناعي</p>
                 </div>
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">🗄️</div>
                     <h4>MySQL</h4>
-                    <p>قاعدة بيانات علائقية عالية الأداء</p>
+                    <p>قاعدة بيانات علائقية</p>
                 </div>
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">🔥</div>
                     <h4>Firebase</h4>
-                    <p>خدمات سحابية متكاملة (إشعارات، مصادقة)</p>
+                    <p>خدمات سحابية متكاملة</p>
                 </div>
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">🧠</div>
                     <h4>Scikit-learn</h4>
-                    <p>مكتبة تعلم آلة للتنبؤات والتحليلات</p>
+                    <p>تعلم آلة للتنبؤات</p>
                 </div>
                 <div class="tech-item fade-in">
                     <div class="tech-emoji">📊</div>
@@ -2148,40 +2827,78 @@
         </div>
     </section>
 
+    <!-- Conclusion -->
+    <section class="conclusion-section" id="conclusion">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <span class="section-badge" style="background:rgba(33,150,243,0.2);color:#64B5F6;">🎯 الخاتمة</span>
+                <h2>VITA - <span style="color:#64B5F6;">المستقبل الصحي الذكي</span></h2>
+                <p>ملخص المشروع والقيمة المقدمة.</p>
+            </div>
+            <div class="conclusion-grid">
+                <div class="conclusion-card fade-in">
+                    <div class="conclusion-icon">📱</div>
+                    <h4>حل متكامل</h4>
+                    <p>تطبيق موحد لجميع احتياجات الصحة</p>
+                </div>
+                <div class="conclusion-card fade-in">
+                    <div class="conclusion-icon">🤖</div>
+                    <h4>توصيات ذكية</h4>
+                    <p>توصيات مخصصة بالذكاء الاصطناعي</p>
+                </div>
+                <div class="conclusion-card fade-in">
+                    <div class="conclusion-icon">🔒</div>
+                    <h4>أمان وخصوصية</h4>
+                    <p>حماية كاملة للبيانات الحساسة</p>
+                </div>
+                <div class="conclusion-card fade-in">
+                    <div class="conclusion-icon">⚡</div>
+                    <h4>أداء ممتاز</h4>
+                    <p>سرعة وسهولة في الاستخدام</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:40px;padding:32px;background:rgba(255,255,255,0.05);border-radius:var(--radius);border:1px solid rgba(255,255,255,0.1);">
+                <p style="font-size:1.3rem;font-weight:700;color:white;">🎯 الهدف: تحسين جودة حياة الملايين من خلال تكنولوجيا صحية ذكية وموثوقة</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="footer-container">
             <div class="footer-brand">
                 <h3>VITA</h3>
-                <p>تطبيق إدارة الصحة الشامل - منصة صحية متكاملة تعمل بالذكاء الاصطناعي لتحسين جودة حياتك.</p>
+                <p>تطبيق إدارة الصحة الشامل - منصة صحية متكاملة تعمل بالذكاء الاصطناعي.</p>
+                <p style="margin-top:12px;font-size:0.85rem;color:rgba(255,255,255,0.5);">مشروع تخرج - كلية تكنولوجيا الصناعة والطاقة</p>
             </div>
             <div class="footer-links">
                 <div class="footer-col">
                     <h4>التطبيق</h4>
                     <ul>
+                        <li><a href="#problem">المشكلة</a></li>
+                        <li><a href="#solution">الحل</a></li>
                         <li><a href="#features">المميزات</a></li>
                         <li><a href="#architecture">البنية</a></li>
                         <li><a href="#screens">الشاشات</a></li>
                         <li><a href="#flowcharts">المخططات</a></li>
-                        <li><a href="#tech">التقنيات</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>التقنيات</h4>
                     <ul>
-                        <li><a href="#">Flutter</a></li>
-                        <li><a href="#">FastAPI</a></li>
-                        <li><a href="#">Python</a></li>
-                        <li><a href="#">Machine Learning</a></li>
+                        <li><a href="#tech">Flutter</a></li>
+                        <li><a href="#tech">FastAPI</a></li>
+                        <li><a href="#tech">Python</a></li>
+                        <li><a href="#tech">Machine Learning</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>المشروع</h4>
                     <ul>
-                        <li><a href="#">المستودع</a></li>
-                        <li><a href="#">التوثيق</a></li>
-                        <li><a href="#">المساهمة</a></li>
-                        <li><a href="#">الترخيص</a></li>
+                        <li><a href="#impact">التأثير</a></li>
+                        <li><a href="#future">الخطط</a></li>
+                        <li><a href="#recommendations">التوصيات</a></li>
+                        <li><a href="#conclusion">الخاتمة</a></li>
                     </ul>
                 </div>
             </div>
@@ -2192,6 +2909,15 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+        <button class="close-btn" onclick="closeLightbox()">✕</button>
+        <button class="nav-btn prev" onclick="prevImage()">❮</button>
+        <img id="lightboxImg" src="" alt="مخطط توضيحي">
+        <button class="nav-btn next" onclick="nextImage()">❯</button>
+        <div class="counter" id="lightboxCounter">1 / 1</div>
+    </div>
+
     <script>
         // Mobile nav toggle
         const navToggle = document.getElementById('navToggle');
@@ -2201,7 +2927,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close nav on link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -2221,7 +2946,7 @@
             observer.observe(el);
         });
 
-        // Active nav link on scroll
+        // Active nav link
         const sections = document.querySelectorAll('section[id]');
         window.addEventListener('scroll', () => {
             let current = '';
@@ -2239,7 +2964,7 @@
             });
         });
 
-        // Lightbox functionality
+        // Lightbox
         let currentImageIndex = 0;
         let lightboxImages = [];
 
@@ -2248,11 +2973,9 @@
             const lightboxImg = document.getElementById('lightboxImg');
             const counter = document.getElementById('lightboxCounter');
 
-            // Collect all images in the gallery
             const allImages = document.querySelectorAll('.flowchart-img');
             lightboxImages = Array.from(allImages).map(img => img.src);
 
-            // Find current index
             currentImageIndex = lightboxImages.indexOf(imgElement.src);
             if (currentImageIndex === -1) currentImageIndex = 0;
 
@@ -2279,7 +3002,6 @@
             document.getElementById('lightboxCounter').textContent = `${currentImageIndex + 1} / ${lightboxImages.length}`;
         }
 
-        // Keyboard navigation for lightbox
         document.addEventListener('keydown', (e) => {
             if (!document.getElementById('lightbox').classList.contains('active')) return;
             if (e.key === 'Escape') closeLightbox();
@@ -2287,14 +3009,5 @@
             if (e.key === 'ArrowLeft') prevImage();
         });
     </script>
-
-    <!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
-        <button class="close-btn" onclick="closeLightbox()">✕</button>
-        <button class="nav-btn prev" onclick="prevImage()">❮</button>
-        <img id="lightboxImg" src="" alt="مخطط توضيحي">
-        <button class="nav-btn next" onclick="nextImage()">❯</button>
-        <div class="counter" id="lightboxCounter">1 / 1</div>
-    </div>
 </body>
 </html>
