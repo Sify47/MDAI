@@ -1,26 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: May 23, 2026 at 05:18 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `healthmate`
---
-
+USE healthmate;
 -- --------------------------------------------------------
 
 --
@@ -2111,21 +2089,6 @@ INSERT INTO `quiz_sessions` (`id`, `user_id`, `session_date`, `is_onboarding`, `
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `scraping_history`
---
-
-CREATE TABLE `scraping_history` (
-  `id` int(11) NOT NULL,
-  `source` varchar(50) DEFAULT NULL,
-  `properties_found` int(11) DEFAULT 0,
-  `properties_added` int(11) DEFAULT 0,
-  `properties_updated` int(11) DEFAULT 0,
-  `start_time` datetime DEFAULT current_timestamp(),
-  `end_time` datetime DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL,
-  `error_message` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -2644,44 +2607,6 @@ CREATE TABLE `user_tips_log` (
   `read_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_best_buy_areas`
--- (See below for the actual view)
---
-CREATE TABLE `vw_best_buy_areas` (
-`area_name` varchar(255)
-,`state` varchar(100)
-,`area_score` int(11)
-,`investment_potential` decimal(3,1)
-,`resale_liquidity` decimal(3,1)
-,`key_insights` text
-,`available_properties` bigint(21)
-,`current_avg_price` decimal(13,2)
-,`avg_buy_score` decimal(6,2)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `vw_property_stats`
--- (See below for the actual view)
---
-CREATE TABLE `vw_property_stats` (
-`state` varchar(100)
-,`total_properties` bigint(21)
-,`avg_price` decimal(16,2)
-,`avg_price_per_m` decimal(13,2)
-,`avg_area` decimal(11,2)
-,`avg_buy_score` decimal(6,2)
-,`min_price` decimal(15,2)
-,`max_price` decimal(15,2)
-,`installment_count` decimal(22,0)
-,`cash_count` decimal(22,0)
-);
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `walking_activities`
@@ -2801,21 +2726,8 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 
 -- --------------------------------------------------------
 
---
--- Structure for view `vw_best_buy_areas`
---
-DROP TABLE IF EXISTS `vw_best_buy_areas`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_best_buy_areas`  AS SELECT `a`.`area_name` AS `area_name`, `a`.`state` AS `state`, `a`.`area_score` AS `area_score`, `a`.`investment_potential` AS `investment_potential`, `a`.`resale_liquidity` AS `resale_liquidity`, `a`.`key_insights` AS `key_insights`, count(`p`.`id`) AS `available_properties`, round(avg(`p`.`price_per_m`),2) AS `current_avg_price`, round(avg(`p`.`buy_score`),2) AS `avg_buy_score` FROM (`area_intelligence` `a` left join `properties` `p` on((`p`.`location` = `a`.`area_name` or `p`.`state` = `a`.`area_name`) and `p`.`is_active` = 1)) GROUP BY `a`.`area_name`, `a`.`state`, `a`.`area_score`, `a`.`investment_potential`, `a`.`resale_liquidity`, `a`.`key_insights` ORDER BY round(avg(`p`.`buy_score`),2) DESC, `a`.`area_score` DESC ;
-
 -- --------------------------------------------------------
 
---
--- Structure for view `vw_property_stats`
---
-DROP TABLE IF EXISTS `vw_property_stats`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_property_stats`  AS SELECT `properties`.`state` AS `state`, count(0) AS `total_properties`, round(avg(`properties`.`price`),2) AS `avg_price`, round(avg(`properties`.`price_per_m`),2) AS `avg_price_per_m`, round(avg(`properties`.`area`),2) AS `avg_area`, round(avg(`properties`.`buy_score`),2) AS `avg_buy_score`, min(`properties`.`price`) AS `min_price`, max(`properties`.`price`) AS `max_price`, sum(case when `properties`.`payment_method` = 'Installments' then 1 else 0 end) AS `installment_count`, sum(case when `properties`.`payment_method` = 'Cash' then 1 else 0 end) AS `cash_count` FROM `properties` WHERE `properties`.`is_active` = 1 GROUP BY `properties`.`state` ;
 
 --
 -- Indexes for dumped tables
@@ -2881,23 +2793,11 @@ ALTER TABLE `activity_recurrence`
 --
 -- Indexes for table `analysis_types`
 --
-ALTER TABLE `analysis_types`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `unique_name_ar` (`name_ar`),
-  ADD UNIQUE KEY `unique_name_en` (`name_en`);
+
 
 --
 -- Indexes for table `area_intelligence`
 --
-ALTER TABLE `area_intelligence`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `area_name` (`area_name`),
-  ADD KEY `idx_area_name` (`area_name`),
-  ADD KEY `idx_state` (`state`),
-  ADD KEY `idx_area_score` (`area_score`),
-  ADD KEY `idx_category` (`category`),
-  ADD KEY `idx_investment_potential` (`investment_potential`),
-  ADD KEY `idx_area_intelligence_score` (`area_score`,`investment_potential`);
 
 --
 -- Indexes for table `behavioral_nudges`
@@ -3209,49 +3109,6 @@ ALTER TABLE `prevention_plans`
 --
 -- Indexes for table `price_history`
 --
-ALTER TABLE `price_history`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_property_id` (`property_id`),
-  ADD KEY `idx_record_date` (`record_date`);
-
---
--- Indexes for table `price_predictions`
---
-ALTER TABLE `price_predictions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_location` (`location`),
-  ADD KEY `idx_prediction_date` (`prediction_date`),
-  ADD KEY `idx_property_type` (`property_type`);
-
---
--- Indexes for table `properties`
---
-ALTER TABLE `properties`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `link` (`link`),
-  ADD KEY `idx_state` (`state`),
-  ADD KEY `idx_location` (`location`),
-  ADD KEY `idx_price` (`price`),
-  ADD KEY `idx_price_per_m` (`price_per_m`),
-  ADD KEY `idx_scrape_date` (`scrape_date`),
-  ADD KEY `idx_property_type` (`property_type`),
-  ADD KEY `idx_bedrooms` (`bedrooms`),
-  ADD KEY `idx_buy_score` (`buy_score`),
-  ADD KEY `idx_is_active` (`is_active`),
-  ADD KEY `idx_properties_location_price` (`location`,`price`),
-  ADD KEY `idx_properties_state_buyscore` (`state`,`buy_score`),
-  ADD KEY `idx_properties_scrape_date_price` (`scrape_date`,`price`);
-ALTER TABLE `properties` ADD FULLTEXT KEY `idx_title_search` (`title`);
-ALTER TABLE `properties` ADD FULLTEXT KEY `idx_location_search` (`location`,`state`);
-
---
--- Indexes for table `property_alerts`
---
-ALTER TABLE `property_alerts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_user_id` (`user_id`),
-  ADD KEY `idx_is_active` (`is_active`),
-  ADD KEY `idx_location` (`location`);
 
 --
 -- Indexes for table `quiz_options`
@@ -3278,11 +3135,6 @@ ALTER TABLE `quiz_sessions`
 --
 -- Indexes for table `scraping_history`
 --
-ALTER TABLE `scraping_history`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_start_time` (`start_time`),
-  ADD KEY `idx_source` (`source`),
-  ADD KEY `idx_status` (`status`);
 
 --
 -- Indexes for table `smart_notifications`
@@ -3534,14 +3386,10 @@ ALTER TABLE `activity_recurrence`
 --
 -- AUTO_INCREMENT for table `analysis_types`
 --
-ALTER TABLE `analysis_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `area_intelligence`
 --
-ALTER TABLE `area_intelligence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `behavioral_nudges`
@@ -3762,26 +3610,6 @@ ALTER TABLE `prevention_plans`
 --
 -- AUTO_INCREMENT for table `price_history`
 --
-ALTER TABLE `price_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `price_predictions`
---
-ALTER TABLE `price_predictions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `properties`
---
-ALTER TABLE `properties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11483;
-
---
--- AUTO_INCREMENT for table `property_alerts`
---
-ALTER TABLE `property_alerts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `quiz_options`
@@ -3804,8 +3632,6 @@ ALTER TABLE `quiz_sessions`
 --
 -- AUTO_INCREMENT for table `scraping_history`
 --
-ALTER TABLE `scraping_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `smart_notifications`
@@ -4075,6 +3901,7 @@ ALTER TABLE `diabetes_symptoms`
 --
 -- Constraints for table `dynamic_daily_targets`
 --
+SET FOREIGN_KEY_CHECKS = 0;
 ALTER TABLE `dynamic_daily_targets`
   ADD CONSTRAINT `fk_dynamic_targets_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
@@ -4132,9 +3959,6 @@ ALTER TABLE `prevention_plans`
 --
 -- Constraints for table `price_history`
 --
-ALTER TABLE `price_history`
-  ADD CONSTRAINT `price_history_ibfk_1` FOREIGN KEY (`property_id`) REFERENCES `properties` (`id`) ON DELETE CASCADE;
-
 --
 -- Constraints for table `quiz_options`
 --
@@ -4216,7 +4040,5 @@ ALTER TABLE `walking_activities`
 ALTER TABLE `weight_history`
   ADD CONSTRAINT `weight_history_ibfk_1` FOREIGN KEY (`user_nutrition_id`) REFERENCES `user_nutrition` (`id`);
 COMMIT;
+SET FOREIGN_KEY_CHECKS = 1;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

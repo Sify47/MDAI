@@ -1480,7 +1480,7 @@ class _CommunityMainScreenState extends State<CommunityMainScreen>
                         'تسجيل الخروج',
                         style: TextStyle(color: Colors.red),
                       ),
-                      onTap: () => _showLogoutDialog(),
+                      onTap: () => Navigator.pop(context),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
